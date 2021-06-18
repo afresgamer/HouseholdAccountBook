@@ -91,6 +91,7 @@
             this.btnNotification.TabIndex = 3;
             this.btnNotification.Text = "通知";
             this.btnNotification.UseVisualStyleBackColor = true;
+            this.btnNotification.Visible = false;
             this.btnNotification.Click += new System.EventHandler(this.btnNotification_Click);
             // 
             // button4
@@ -133,6 +134,7 @@
             this.txtNotification.Size = new System.Drawing.Size(97, 40);
             this.txtNotification.TabIndex = 7;
             this.txtNotification.Text = "通知";
+            this.txtNotification.Visible = false;
             // 
             // label4
             // 

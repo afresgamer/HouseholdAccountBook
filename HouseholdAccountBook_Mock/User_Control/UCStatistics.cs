@@ -494,7 +494,9 @@ namespace HouseholdAccountBook_Mock.User_Control
                     statisticsInfo.StartDate = new DateTime(DTPickerBreakdown.Value.Year, 1, 1);
                     statisticsInfo.EndDate = new DateTime(DTPickerBreakdown.Value.AddYears(1).Year, 1, 1);
                 }
-                statisticsInfo.Id = bookList[0].idStr == AppConst.INCOME ? AppConst.INCOME_VALUE : AppConst.SPENDING_VALUE;
+
+                if (bookList.Count <= 0) statisticsInfo.Id = AppConst.INCOME_VALUE;
+                else statisticsInfo.Id = bookList[0].idStr == AppConst.INCOME ? AppConst.INCOME_VALUE : AppConst.SPENDING_VALUE;
             }
             //期間指定
             else if (DTPickerBreakdown.Visible && DTPickerBreakdown02.Visible)
@@ -502,7 +504,8 @@ namespace HouseholdAccountBook_Mock.User_Control
                 statisticsInfo.BookList = bookList;
                 statisticsInfo.StartDate = DateTime.Parse(DTPickerBreakdown.Value.ToShortDateString());
                 statisticsInfo.EndDate = DateTime.Parse(DTPickerBreakdown02.Value.ToShortDateString());
-                statisticsInfo.Id = bookList[0].idStr == AppConst.INCOME ? AppConst.INCOME_VALUE : AppConst.SPENDING_VALUE;
+                if (bookList.Count <= 0) statisticsInfo.Id = AppConst.INCOME_VALUE;
+                else statisticsInfo.Id = bookList[0].idStr == AppConst.INCOME ? AppConst.INCOME_VALUE : AppConst.SPENDING_VALUE;
             }
 
             return statisticsInfo;
@@ -518,14 +521,14 @@ namespace HouseholdAccountBook_Mock.User_Control
             int userId = int.Parse(config.AppSettings.Settings["UserId"].Value);
             // ベースDBからデータ取得処理
             List<HouseholdABookBase.HouseholdABook> dataList = FindHouseholdABookList();
-            if (dataList == null) return new List<StatisticsData>();
+            if (dataList == null || dataList.Count <= 0) return new List<StatisticsData>();
 
             AppConst.StatisticsInfo statisticsInfo = FindStatisticsInfo(dataList, userId);
             if (statisticsInfo == null) return new List<StatisticsData>();
 
             //グラフ表示用データを作成or更新
             List<StatisticsData> statisticsDataList = StatisticsData.UpsertDataList(statisticsInfo);
-            if (statisticsDataList == null || statisticsDataList.Count < 0) return new List<StatisticsData>();
+            if (statisticsDataList == null || statisticsDataList.Count <= 0) return new List<StatisticsData>();
 
             return statisticsDataList;
         }

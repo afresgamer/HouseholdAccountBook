@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BtnToastTestSend = new System.Windows.Forms.Button();
             this.BtnToastSend = new System.Windows.Forms.Button();
             this.Txt_Toast = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@
             this.TxtAddMinute = new System.Windows.Forms.Label();
             this.TbAddMinute = new System.Windows.Forms.TextBox();
             this.panelToast = new System.Windows.Forms.Panel();
+            this.ToastNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.panelToast.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -190,6 +192,12 @@
             this.panelToast.Size = new System.Drawing.Size(780, 91);
             this.panelToast.TabIndex = 13;
             // 
+            // ToastNotifyIcon
+            // 
+            this.ToastNotifyIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ToastNotifyIcon.Text = "テスト";
+            this.ToastNotifyIcon.Visible = true;
+            // 
             // ToastManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -235,5 +243,6 @@
         private System.Windows.Forms.Label TxtAddMinute;
         private System.Windows.Forms.TextBox TbAddMinute;
         private System.Windows.Forms.Panel panelToast;
+        private System.Windows.Forms.NotifyIcon ToastNotifyIcon;
     }
 }

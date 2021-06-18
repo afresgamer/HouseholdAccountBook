@@ -98,6 +98,7 @@ namespace HouseholdAccountBook_Mock
             ChangeLayout(DisplayBtnType.Assets);
             //支出と収入フラグ初期化
             isIncomeOrSpending = false;
+            McSelect.SelectionRange = new SelectionRange(DateTime.Now, DateTime.Now);
         }
 
         #endregion

@@ -86,8 +86,8 @@
             // 
             // TPIncome
             // 
-            this.TPIncome.Controls.Add(this.TLPanelContent);
             this.TPIncome.Controls.Add(this.FLPanelSetDate);
+            this.TPIncome.Controls.Add(this.TLPanelContent);
             this.TPIncome.Controls.Add(this.TLPanelSave);
             this.TPIncome.Controls.Add(this.TLPanelInfo);
             this.TPIncome.Controls.Add(this.TLPanelBtnSpace);
@@ -131,9 +131,9 @@
             // 
             this.FLPanelSetDate.Controls.Add(this.McSelect);
             this.FLPanelSetDate.Controls.Add(this.BtnOk);
-            this.FLPanelSetDate.Location = new System.Drawing.Point(9, 416);
+            this.FLPanelSetDate.Location = new System.Drawing.Point(14, 416);
             this.FLPanelSetDate.Name = "FLPanelSetDate";
-            this.FLPanelSetDate.Size = new System.Drawing.Size(277, 294);
+            this.FLPanelSetDate.Size = new System.Drawing.Size(352, 494);
             this.FLPanelSetDate.TabIndex = 3;
             this.FLPanelSetDate.Visible = false;
             // 
@@ -141,17 +141,17 @@
             // 
             this.McSelect.Location = new System.Drawing.Point(9, 9);
             this.McSelect.Name = "McSelect";
-            this.McSelect.SelectionRange = new System.Windows.Forms.SelectionRange(new System.DateTime(2020, 6, 1, 0, 0, 0, 0), new System.DateTime(2020, 6, 7, 0, 0, 0, 0));
             this.McSelect.ShowToday = false;
             this.McSelect.TabIndex = 2;
             this.McSelect.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.McSelect_DateSelected);
             // 
             // BtnOk
             // 
+            this.BtnOk.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BtnOk.Font = new System.Drawing.Font("MS UI Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.BtnOk.Location = new System.Drawing.Point(3, 225);
             this.BtnOk.Name = "BtnOk";
-            this.BtnOk.Size = new System.Drawing.Size(254, 61);
+            this.BtnOk.Size = new System.Drawing.Size(254, 70);
             this.BtnOk.TabIndex = 5;
             this.BtnOk.Text = "OK";
             this.BtnOk.UseVisualStyleBackColor = true;
