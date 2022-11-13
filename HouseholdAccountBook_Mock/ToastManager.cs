@@ -14,6 +14,8 @@ namespace HouseholdAccountBook_Mock
 
         private const string TOAST_TITLE = "家計簿アプリ";
 
+        private const string EXE_PATH = @"C:\Users\makia\OneDrive\デスクトップ\家計簿アプリ";
+
         #endregion
 
         #region コンストラクタ
@@ -92,6 +94,7 @@ namespace HouseholdAccountBook_Mock
                     if (result != DialogResult.OK) return;
                 }
 
+                //TODO 送信されないバグが発生したため、こちらの機能については保留
                 CreateScheduleToast();
 
                 OriginMBox.MBoxInfoOK(AppConst.TOAST_SUCCESS);
@@ -161,15 +164,13 @@ namespace HouseholdAccountBook_Mock
                 texts[1].AppendChild(xml.CreateTextNode("家計簿アプリを使用しましたか？"));
 
                 DateTimeOffset dateTimeOffset =
-                    new DateTimeOffset(DTPickerToast.Value.Year, DTPickerToast.Value.Month, DTPickerToast.Value.Day, 
-                    DateTime.Now.Hour + int.Parse(TbAddHour.Text), 
-                    DateTime.Now.Minute + int.Parse(TbAddMinute.Text),
-                    DateTime.Now.Second, TimeSpan.Zero);
+                    new DateTimeOffset(DTPickerToast.Value.Year, DTPickerToast.Value.Month, DTPickerToast.Value.Day,
+                    DTPickerToast.Value.Hour, DTPickerToast.Value.Minute, DTPickerToast.Value.Second, 
+                    new TimeSpan(int.Parse(TbAddHour.Text), int.Parse(TbAddMinute.Text), 0));
                 var scheduled = new ScheduledToastNotification(xml, dateTimeOffset);
                 
                 var toastNotifier = ToastNotificationManager.CreateToastNotifier(TOAST_TITLE);
                 toastNotifier.AddToSchedule(scheduled);
-                toastNotifier.ScheduledToastNotificationShowing += ToastNotifier_ScheduledToastNotificationShowing;
             }
             catch (Exception ex)
             {
@@ -177,11 +178,6 @@ namespace HouseholdAccountBook_Mock
                 return false;
             }
             return true;
-        }
-
-        private void ToastNotifier_ScheduledToastNotificationShowing(ToastNotifier sender, ScheduledToastNotificationShowingEventArgs args)
-        {
-            Console.WriteLine("Scheduled");
         }
 
         #endregion
